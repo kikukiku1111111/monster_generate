@@ -1,0 +1,10 @@
+<div class="text-center">
+編集する
+<%= form_tag("/user/useredit") do%>
+    <ul>
+        <li>名前: <input name="name"> </li>
+        <li>メールアドレス: <input name="email"></li>
+    </ul>
+    <input type="submit" value="提出" >
+<% end %>
+</div>
