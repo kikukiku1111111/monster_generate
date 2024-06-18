@@ -82,7 +82,7 @@ Rails.application.configure do
      :address        => ENV['MAILGUN_SMTP_SERVER'],
      :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
      :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-     :domain         => 'pokemon-generation-379761cd5574.herokuapp.com',
+     :domain         => 'mongene.net',
      :authentication => :plain,
    }
   
@@ -103,5 +103,5 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  config.action_mailer.default_url_options = { host: 'pokemon-generation-379761cd5574.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'mongene.net'}
 end
