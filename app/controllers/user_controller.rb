@@ -28,10 +28,15 @@ class UserController < ApplicationController
     session[:image_url]=response["data"][0]["url"]
     ImageJob.perform_now(@monster,response["data"][0]["url"])
     @monster.save
-    redirect_to("/user/mypokemon")
+    redirect_to("/user/pokemon_created")
   end
 
   def mypokemon
+  end
+  def pokemon_created
+  end
+
+  def signup_email_sended
   end
 
 

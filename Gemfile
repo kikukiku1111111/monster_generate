@@ -78,5 +78,7 @@ group :production do
   gem 'pg'
 end
 gem 'aws-sdk', '~> 3'
+gem 'rails-i18n'
+gem 'devise-i18n-views'
 
 gem "tailwindcss-rails", "~> 2.6"

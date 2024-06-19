@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def top
+    if current_user
+      redirect_to("/user/mypokemon")
+    end
   end
   def member
     @users=User.all

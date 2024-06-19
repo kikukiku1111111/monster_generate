@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users
 
   get '/'=>'home#top'
   get 'home/member'
@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   get 'user/mypokemon' 
   post 'user/create' => 'user#create'
   post "user/useredit"=>"user#useredit"
-  get "user/:id/edit" => "user#edit"
-
+  get "user/:id/edit" => "user#edit"  
+  get "user/signup_email_sended"
+  get "user/pokemon_created"
   get 'user/:id'=> 'user#individual'
-
+  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 end
 
 
