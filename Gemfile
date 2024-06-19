@@ -77,5 +77,6 @@ end
 group :production do
   gem 'pg'
 end
+gem 'aws-sdk', '~> 3'
 
 gem "tailwindcss-rails", "~> 2.6"
