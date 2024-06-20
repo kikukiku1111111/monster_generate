@@ -1,10 +1,11 @@
-<div class="text-center">
-編集する
-<%= form_tag("/user/useredit") do%>
-    <ul>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">編集する</h2>
+    <%= form_tag("/user/useredit") do%>
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <li>名前: <input name="name"> </li>
         <li>メールアドレス: <input name="email"></li>
     </ul>
     <input type="submit" value="提出" >
 <% end %>
+    </div>
 </div>

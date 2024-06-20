@@ -22,13 +22,14 @@ class UserController < ApplicationController
 
   def create
     @monster=Monster.new(user_id:current_user.id, name:params[:name],attribution:params[:attribution],animal:params[:animal], color:params[:color])
-    @monster.save
-    prompt="realistic pokemon like, #{params[:attribution]} type, #{params[:animal]} like, #{params[:color]}"
-    response=OpenAiService.generate_image(prompt)
-    session[:image_url]=response["data"][0]["url"]
-    ImageJob.perform_now(@monster,response["data"][0]["url"])
-    @monster.save
-    redirect_to("/user/pokemon_created")
+    if @monster.save
+      prompt="realistic pokemon like, #{params[:attribution]} type, #{params[:animal]} like, #{params[:color]}"
+      response=OpenAiService.generate_image(prompt)
+      session[:image_url]=response["data"][0]["url"]
+      ImageJob.perform_now(@monster,response["data"][0]["url"])
+      @monster.save
+      redirect_to("/user/pokemon_created")  
+    end
   end
 
   def mypokemon
