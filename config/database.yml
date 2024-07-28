@@ -25,3 +25,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  username: myapp
+  host: <%= ENV["DB_HOST"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
