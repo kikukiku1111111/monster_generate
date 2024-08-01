@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def top
     if current_user
-      redirect_to("/user/mypokemon")
+      redirect_to("/user/mymongene")
     end
   end
   def member
