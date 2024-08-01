@@ -6,14 +6,12 @@ Rails.application.routes.draw do
 
 
   
-  get 'user/pokemon' =>'user#pokemon'
-  get 'user/mypokemon' 
+  get 'user/mongene' =>'user#mongene'
+  get 'user/mymongene' 
   post 'user/create' => 'user#create'
-  post "user/useredit"=>"user#useredit"
-  get "user/:id/edit" => "user#edit"  
   get "user/signup_email_sended"
   get "user/authenticate_completed"
-  get "user/pokemon_created"
+  get "user/mongene_created"
   get 'user/:id'=> 'user#individual'
 
   
