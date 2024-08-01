@@ -2,7 +2,12 @@
     <h2 class="text-base font-semibold leading-7 text-gray-900 text-center ">モンジェネ生成
     </h2>
     <p class="mt-1 text-sm leading-6 text-gray-600 text-center">オリジナルのモンジェネを生成しよう
-    </p>        
+    </p>       
+    <% flash.each do |message_type, message| %>
+        <div class="text-center text-red-500 text-sm font-medium">
+            <%= message %>
+        </div>
+    <% end %>
     <%= form_tag("/user/create") do %>
         <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="sm:col-span-4 sm:mx-auto sm:w-full sm:max-w-sm">

@@ -25,9 +25,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    user = User.find(current_user.id)
+    soft_delete(user)
+    set_flash_message :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational { redirect_to("/")}
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -59,4 +63,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
    user_signup_email_sended_path
   end
+
+  private
+
+  def soft_delete(user)
+    deleted_email = user.email + '_deleted_' + Time.current.to_s.gsub(" ", "") 
+    user.assign_attributes(email: deleted_email, deleted_at: Time.current)
+    user.skip_reconfirmation!
+    user.save!
+  end
 end
+

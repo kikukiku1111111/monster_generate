@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :monsters ,dependent: :destroy
-  
+  def active_for_authentication?
+    super && !deleted_at
+  end
 end

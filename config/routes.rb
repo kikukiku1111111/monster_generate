@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   post "user/useredit"=>"user#useredit"
   get "user/:id/edit" => "user#edit"  
   get "user/signup_email_sended"
+  get "user/authenticate_completed"
   get "user/pokemon_created"
   get 'user/:id'=> 'user#individual'
+
   
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -26,7 +28,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  devise_for :users, :controllers => {
+    :registrations => "users/registrations", 
+    :confirmations => "users/confirmations"
+  }
 end
 
 
